@@ -51,7 +51,7 @@ jobs:
       - name: Terraform Init
         working-directory: ./config
         run: | 
-          terraform init -backend-config="bucket=${{ secrets.DEV_TF_STATE_BUCKET }}" \
+          terraform init -backend-config="bucket=jenniebrown-tf-state" \
           -backend-config="credentials=creds.json"
       - name: Terraform Format
         working-directory: ./config
