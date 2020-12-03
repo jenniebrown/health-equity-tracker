@@ -61,7 +61,7 @@ jobs:
         #if: github.ref == 'refs/heads/$default-branch' && github.event_name == 'push'
         working-directory: ./config
         run: |
-          terraform apply -auto-approve -var-file=test/jenniebrown.tfvars \
+          terraform apply -auto-approve -var-file=test/jennie.tfvars \
           -var 'gcp_credentials=${{ secrets.DEV_DEPLOYER_SA_KEY }}' \
           -var 'project_id=${{ secrets.DEV_PROJECT_ID }}' \
           -var 'ingestion_image_digest=${{ steps.ingestion.outputs.image-digest }}' \
