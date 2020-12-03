@@ -131,4 +131,9 @@ resource "google_cloud_run_service" "data_server_service" {
   autogenerate_revision_name = true
 }
 
+# Output the URL of the data server for use in e2e tests.
+output "data_server_url" {
+  value = google_cloud_run_service.data_server_service.status.url
+}
+
 /* [END] Cloud Run Setup */
