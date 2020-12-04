@@ -59,6 +59,7 @@ jobs:
         run: terraform fmt -check
       - name: Terraform Apply
         #if: github.ref == 'refs/heads/$default-branch' && github.event_name == 'push'
+        id: terraform
         working-directory: ./config
         run: |
           terraform apply -auto-approve -var-file=test/jennie.tfvars \
@@ -67,21 +68,14 @@ jobs:
           -var 'ingestion_image_digest=${{ steps.ingestion.outputs.image-digest }}' \
           -var 'gcs_to_bq_image_digest=${{ steps.gcstobq.outputs.image-digest }}' \
           -var 'data_server_image_digest=${{ steps.serving.outputs.image-digest }}'
-      - name: Terraform outputs
-        id: terraform
-        uses: hashicorp/terraform-github-actions@master
-        with:
-          tf_actions_version: 0.12.13
-          tf_actions_subcommand: 'output'
-          tf_actions_working_dir: './config'
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
       - name: Run E2E Tests
         run: |
-          echo steps.terraform.outputs.tf_actions_output
+          echo steps.terraform.outputs.data_server_url
           python integration_tests/data_serving.python
 #        env:
-#          SERVICE_URL: ${{ fromJSON(steps.terraform.outputs.tf_actions_output).data_server_url }}
+#          SERVICE_URL: ${{ steps.terraform.outputs.data_server_url }}
         
