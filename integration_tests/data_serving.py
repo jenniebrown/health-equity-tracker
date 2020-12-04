@@ -6,7 +6,7 @@ import requests
 def runTests():
     # Get the url of the service.
     service_url = os.environ.get('SERVICE_URL')
-    logging.error('SERVICE_URL=%s', service_url)
+    print('SERVICE_URL=%s', service_url)
 
     # Get an auth token for making the request
     metadata_server_token_url = 'http://metadata/computeMetadata/v1/instance/service-accounts/default/identity?audience='
@@ -32,4 +32,5 @@ def runTests():
 
 
 if '__name__' == 'main':
-    runTests()
+    exit(1)
+    #runTests()
