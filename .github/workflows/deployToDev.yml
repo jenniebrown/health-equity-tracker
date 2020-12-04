@@ -77,7 +77,7 @@ jobs:
       - name: Run E2E Tests
         run: |
           pip install -r integration_tests/requirements.txt
-          python integration_tests/data_serving.py || code=$?; if [[ $code -ne 0]] then exit $code fi
+          python integration_tests/data_serving.py || code=$?; if [[ $code -ne 0 ]]; then exit $code; fi
         env:
           SERVICE_URL: ${{ steps.terraform.outputs.data_server_url }}
         
