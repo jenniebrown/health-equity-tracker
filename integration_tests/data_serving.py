@@ -31,7 +31,7 @@ def runTests():
     print('Test completed with no errors')
 
 
-if '__name__' == 'main':
+if __name__ == '__main__':
     print('say something. service_url={}'.format(os.environ.get('SERVICE_URL')))
     exit(1)
     #runTests()
