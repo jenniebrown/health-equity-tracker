@@ -27,19 +27,19 @@ jobs:
         uses: ./.github/actions/buildAndPush
         with:
           dockerfile: 'data_server/Dockerfile'
-          image-path: 'gcr.io/${{ secrets.DEV_PROJECT_ID }}/data-server-service'
+          image-path: 'gcr.io/${{ secrets.DEV_PROJECT_ID }}/data-server-service-automated'
       - name: Build and Push Data Ingestion Image
         id: ingestion
         uses: ./.github/actions/buildAndPush
         with:
           dockerfile: 'run_ingestion/Dockerfile'
-          image-path: 'gcr.io/${{ secrets.DEV_PROJECT_ID }}/ingestion-service'  
+          image-path: 'gcr.io/${{ secrets.DEV_PROJECT_ID }}/ingestion-service-automated'  
       - name: Build and Push GCS to BQ Image
         id: gcstobq
         uses: ./.github/actions/buildAndPush
         with:
           dockerfile: 'run_gcs_to_bq/Dockerfile'
-          image-path: 'gcr.io/${{ secrets.DEV_PROJECT_ID }}/gcs-to-bq-service'
+          image-path: 'gcr.io/${{ secrets.DEV_PROJECT_ID }}/gcs-to-bq-service-automated'
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
       - name: Save credentials
