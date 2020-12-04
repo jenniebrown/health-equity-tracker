@@ -1,7 +1,7 @@
 # General
 project_id = "jenniebrown-het-infra-test-e4"
 gcs_landing_bucket = "jenniebrown-dev-landing-bucket-automated"
-bq_dataset_name = "msm_dataset-automated"
+bq_dataset_name = "msm_dataset_automated"
 
 # Pub/Sub topics
 upload_to_gcs_topic_name = "upload-to-gcs-automated"
